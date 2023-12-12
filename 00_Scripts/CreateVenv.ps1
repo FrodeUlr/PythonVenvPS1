@@ -1,10 +1,17 @@
 $currentDir = Get-Location
-Set-Location "G:\PythonVenv\01_Venv"
+Set-Location "D:\00_Privat_Git\PythonVenvPS1\01_Venv"
+$directories = Get-ChildItem -Path D:\00_Privat_Git\PythonVenvPS1\01_Venv -Directory
 
-$directories = Get-ChildItem -Path G:\PythonVenv\01_Venv -Directory
 while ($true) {
     $flagged = $false
-    $venvName = Read-Host "Name of new virtual environment"
+    if($args.length -eq 0)
+    {
+        $venvName = Read-Host "Name of new virtual environment"
+    }
+    else
+    {
+        $venvName = $args[0]
+    }
     foreach ($directory in $directories) {
         if ($directory.Name -eq $venvName) {
             echo "Virtual environment '$venvName' already exists"
@@ -16,9 +23,10 @@ while ($true) {
         & python -m venv $venvName
         & .\$venvName\Scripts\activate.ps1
         python -m pip install --upgrade pip
-        pip install neovim pyvim pylint pydantic
+        pip install neovim pyvim pylint pydantic pytest
         break
     }
 }
 Set-Location $currentDir
 echo "Virtual environment '$venvName' created"
+Set-Location "D:\"
