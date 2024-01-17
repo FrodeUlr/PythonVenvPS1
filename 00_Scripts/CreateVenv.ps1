@@ -7,12 +7,12 @@ while ($true) {
     $venvName = Read-Host "Name of new virtual environment"
     foreach ($directory in $directories) {
         if ($directory.Name -eq $venvName) {
-            echo "Virtual environment '$venvName' already exists"
+            Write-Host "Virtual environment '$venvName' already exists"
             $flagged = $true
         }
     }
     if ($flagged -eq $false) {
-        echo "Creating virtual environment '$venvName'"
+        Write-Host "Creating virtual environment '$venvName'"
         & python -m venv $venvName
         & .\$venvName\Scripts\activate.ps1
         python -m pip install --upgrade pip
@@ -21,4 +21,4 @@ while ($true) {
     }
 }
 Set-Location $currentDir
-echo "Virtual environment '$venvName' created"
+Write-Host "Virtual environment '$venvName' created"
