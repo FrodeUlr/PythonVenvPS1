@@ -1,5 +1,5 @@
-$directories = Get-ChildItem -Path G:\PythonVenv\01_Venv -Directory
-$path = "G:\PythonVenv\01_venv"
+$path = "D:\00_Privat_Git\PythonVenvPS1\01_Venv"
+$directories = Get-ChildItem -Path $path -Directory
 $pathpython = "\scripts\activate.ps1"
 
 Write-Host "Chose the environment you want to activate:"
