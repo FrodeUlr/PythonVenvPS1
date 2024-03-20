@@ -21,7 +21,7 @@ while ($true) {
             & python$pyver -m venv $venvName
             & .\$venvName\Scripts\activate.ps1
             python -m pip install --upgrade pip
-            pip install neovim pyvim pylint pydantic
+            pip install neovim pyvim pylint pydantic jupyter jupyterthemes
             Write-Host "Virtual environment '$venvName' created"
         } catch {
             Write-Host "Error creating virtual environment '$venvName'"
