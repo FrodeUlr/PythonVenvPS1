@@ -1,11 +1,11 @@
 param (
-    [string]$pyver = "3.10"
+    [string]$version = "3.10"
 )
 
 $currentDir = Get-Location
-Set-Location "G:\PythonVenv\01_Venv"
+Set-Location "D:\00_Privat_Git\PythonVenvPS1\01_Venv"
 
-$directories = Get-ChildItem -Path G:\PythonVenv\01_Venv -Directory
+$directories = Get-ChildItem -Path D:\00_Privat_PythonVenvPS1\01_Venv -Directory
 while ($true) {
     $flagged = $false
     $venvName = Read-Host "Name of new virtual environment"

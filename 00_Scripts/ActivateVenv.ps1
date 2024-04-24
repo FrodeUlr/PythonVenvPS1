@@ -1,4 +1,4 @@
-$path = "G:\PythonVenv\01_Venv"
+$path = "D:\00_Privat_Git\PythonVenvPS1\01_Venv"
 $directories = Get-ChildItem -Path $path -Directory
 $pathpython = "\scripts\activate.ps1"
 

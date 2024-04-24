@@ -1,4 +1,4 @@
-$path = "G:\PythonVenv\01_Venv"
+$path = "D:\00_Privat_Git\PythonVenvPS1\01_Venv"
 $directories = Get-ChildItem -Path $path -Directory
 Write-Host "Chose the environment to delete"
 $directories | ForEach-Object -Begin { $i = 1 } -Process { Write-Host "$i. $($_.Name)"; $i++ }
