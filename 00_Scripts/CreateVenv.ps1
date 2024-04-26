@@ -1,14 +1,17 @@
 param (
+    [Parameter(Mandatory=$true)]
+    [string]$name,
     [string]$version = "3.10"
 )
 
 $currentDir = Get-Location
-Set-Location "D:\00_Privat_Git\PythonVenvPS1\01_Venv"
+$path = $env:PRIV_PYTHON_LOC
+Set-Location $path
 
-$directories = Get-ChildItem -Path D:\00_Privat_PythonVenvPS1\01_Venv -Directory
+$directories = Get-ChildItem -Path $path -Directory
 while ($true) {
     $flagged = $false
-    $venvName = Read-Host "Name of new virtual environment"
+    $venvName = $name
     foreach ($directory in $directories) {
         if ($directory.Name -eq $venvName) {
             Write-Host "Virtual environment '$venvName' already exists"
@@ -17,12 +20,12 @@ while ($true) {
     }
     if ($flagged -eq $false) {
         try {
-            Write-Host "Creating virtual environment '$venvName'"
-            & python$pyver -m venv $venvName
+            Write-Host "Creating virtual environment '$venvName' with Python $version"
+            & python$version -m venv $venvName
             & .\$venvName\Scripts\activate.ps1
             python -m pip install --upgrade pip
-            pip install neovim pyvim pylint pydantic jupyter jupyterthemes
-            Write-Host "Virtual environment '$venvName' created"
+            pip install neovim pyvim pylint pydantic jupyter jupyterthemes ruff-lsp
+            Write-Host "Virtual environment '$venvName' created successfully"
         } catch {
             Write-Host "Error creating virtual environment '$venvName'"
         }
