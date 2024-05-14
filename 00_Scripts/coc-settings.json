@@ -1,0 +1,22 @@
+{
+  "cSpell.userWords": [
+    "Cegal",
+    "Clixml",
+    "Prizm",
+    "cegalprizm",
+    "pycoderunner",
+    "pythontestproject",
+    "wellsurvey"
+  ],
+  "languageserver": {
+  "ruff-lsp": {
+    "command": "ruff-lsp",
+    "filetypes": ["python"]
+  }
+},
+"python.linting.ruffEnabled": true,
+"pyright.disableDocumentation": true,
+"pyright.organizeimports.provider": "ruff",
+"python.formatting.provider": "ruff",
+"pyright.disableDiagnostics": true
+}
