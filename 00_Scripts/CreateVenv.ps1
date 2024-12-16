@@ -1,7 +1,8 @@
 param (
     [Parameter(Mandatory=$true)]
     [string]$name,
-    [string]$version = "3.10"
+    [string]$version = "3.10",
+    [string]$clean = "false"
 )
 
 $currentDir = Get-Location
@@ -21,10 +22,11 @@ while ($true) {
     if ($flagged -eq $false) {
         try {
             Write-Host "Creating virtual environment '$venvName' with Python $version"
-            & python$version -m venv $venvName
+            & uv venv $venvName --python $version
             & .\$venvName\Scripts\activate.ps1
-            python -m pip install --upgrade pip
-            pip install neovim pyvim pylint pydantic jupyter jupyterthemes ruff-lsp
+            if ($clean -eq "false") {
+                uv pip install neovim pyvim pylint pydantic jupyter jupyterthemes ruff-lsp
+            }
             Write-Host "Virtual environment '$venvName' created successfully"
         } catch {
             Write-Host "Error creating virtual environment '$venvName'"
