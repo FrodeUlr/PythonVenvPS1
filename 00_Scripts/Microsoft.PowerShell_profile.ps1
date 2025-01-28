@@ -1,10 +1,13 @@
-oh-my-posh init pwsh --config 'C:\Users\Frode\AppData\Local\Programs\oh-my-posh\themes\lightgreen2.omp.json' | Invoke-Expression
+oh-my-posh init pwsh --config 'C:\Users\frodeul\AppData\Local\Programs\oh-my-posh\themes\lightgreen2.omp.json' | Invoke-Expression
 Import-Module posh-git
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 Import-Module -Name Terminal-Icons
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
-function ezalah { eza $args --icons --git --git-repos -lah }
-Set-Alias ls ezalah
-Set-Alias activate "G:\PythonVenv\00_Scripts\ActivateVenv.ps1"
-Set-Alias create "G:\PythonVenv\00_Scripts\CreateVenv.ps1"
-Set-Alias list "G:\PythonVenv\00_Scripts\ListVenv.ps1"
-& "G:\PythonVenv\01_Venv\default\Scripts\activate.ps1"
+
+Set-Alias activate "D:\00_Privat_Git\PythonVenvPS1\00_Scripts\ActivateVenv.ps1"
+Set-Alias create "D:\00_Privat_Git\PythonVenvPS1\00_Scripts\CreateVenv.ps1"
+Set-Alias list "D:\00_Privat_Git\PythonVenvPS1\00_Scripts\ListVenv.ps1"
+Set-Alias grep "Select-String"
+Set-Alias delete "D:\00_Privat_Git\PythonVenvPS1\00_Scripts\DeleteVenv.ps1"
+Set-Alias pipclean "uv pip freeze > unins ; uv pip uninstall -r unins ; del unins"
+
+& "D:\00_Privat_Git\PythonVenvPS1\01_Venv\default\Scripts\Activate.ps1"
