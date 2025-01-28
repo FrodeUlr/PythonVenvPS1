@@ -36,5 +36,6 @@ while ($true) {
         }
         break
     }
+    break
 }
 Set-Location $currentDir
