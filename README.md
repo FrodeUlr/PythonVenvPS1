@@ -22,16 +22,23 @@
         - `jupyterthemes`
         - `ruff-lsp`
     - If `--clean` is provided, no default packaged will be installed.
+
     ![image](./img/create.png)
+
 - Run `00_Scripts\ActivateVenv.ps1` to activate a virtual environment:
     - `.\00_Scripts\ActivateVenv.ps1` will show a list of venvs and their python versions.
     - Enter the number of the venv you want to activate.
+
     ![image](./img/activate.png)
+
 - Run `00_Scripts\DeleteVenv.ps1` to delete a virtual environment:
     - `.\00_Scripts\DeleteVenv.ps1` will show a list of venvs.
     - Enter the number of the venv you want to delete.
+
     ![image](./img/delete.png)
+
 - Run `00_Scripts\ListVenvs.ps1` to list all virtual environments.
+
     ![image](./img/list.png)
 
 ## Tips:
