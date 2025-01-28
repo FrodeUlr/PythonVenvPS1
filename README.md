@@ -29,3 +29,8 @@
     - `.\00_Scripts\DeleteVenv.ps1` will show a list of venvs.
     - Enter the number of the venv you want to delete.
 - Run `00_Scripts\ListVenvs.ps1` to list all virtual environments.
+
+## Tips:
+
+To simplify the usage of the scrips, update your PowerShell profile with aliases to the scrips.
+See the attached example profile in `00_Scripts\Microsoft.PowerShell_profile.ps1`.
