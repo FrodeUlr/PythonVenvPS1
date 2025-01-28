@@ -24,6 +24,8 @@
     - If `--clean` is provided, no default packaged will be installed.
 - Run `00_Scripts\ActivateVenv.ps1` to activate a virtual environment:
     - `.\00_Scripts\ActivateVenv.ps1` will show a list of venvs and their python versions.
+    - Enter the number of the venv you want to activate.
 - Run `00_Scripts\DeleteVenv.ps1` to delete a virtual environment:
-    - `.\00_Scripts\DeleteVenv.ps1 -Name "MyVenv"`
-    - If no `Name` is provided, the script will show a list of venvs and their python versions.
+    - `.\00_Scripts\DeleteVenv.ps1` will show a list of venvs.
+    - Enter the number of the venv you want to delete.
+- Run `00_Scripts\ListVenvs.ps1` to list all virtual environments.
