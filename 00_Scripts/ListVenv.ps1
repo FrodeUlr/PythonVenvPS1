@@ -17,10 +17,10 @@ for($i = 0; $i -lt $directories.Count; $i++) {
 
 $tableobject = foreach($i in 0..($indexes.Count - 1)) {
     [PSCustomObject]@{
-        Index = $indexes[$i]
-        Name = $names[$i]
-        Version = $versions[$i]
+        'Index' = $indexes[$i]
+        'Name' = $names[$i]
+        'Python Version' = $versions[$i]
     }
 }
 
-$tableobject | Format-Table -Property Index, Name, Version -AutoSize
+$tableobject | Format-Table -Property 'Index', 'Name', 'Python Version' -AutoSize
