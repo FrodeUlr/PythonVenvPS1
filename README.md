@@ -22,6 +22,13 @@
         - `jupyterthemes`
         - `ruff-lsp`
     - If `--clean` is provided, no default packaged will be installed.
+    - If you would like to change the default packages, edit the `00_Scripts\CreateVenv.ps1` script.
+
+    ```powershell
+        if ($clean -eq "false") {
+            uv pip install neovim pyvim pylint pydantic jupyter jupyterthemes ruff-lsp
+        }
+    ```
 
     ![image](./img/create.png)
 
