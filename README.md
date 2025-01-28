@@ -48,4 +48,5 @@ See the attached example profile in `00_Scripts\Microsoft.PowerShell_profile.ps1
 
 Installing python packages should be done using UV to save time:
   - `uv pip install <package>` will install the package in the active venv.
+
   ![image](./img/uvpipinstall.png)
