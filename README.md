@@ -53,7 +53,8 @@
 To simplify the usage of the scrips, update your PowerShell profile with aliases to the scrips.
 See the attached example profile in `00_Scripts\Microsoft.PowerShell_profile.ps1`.
 
-Installing python packages should be done using UV to save time:
+Installing python packages should be done using UV, not pip:
   - `uv pip install <package>` will install the package in the active venv.
+  - `pip` is not included in `uv venvs`, so it will not work.
 
   ![image](./img/uvpipinstall.png)
