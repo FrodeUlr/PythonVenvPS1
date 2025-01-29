@@ -3,7 +3,7 @@
 ## Requirements:
 
 - [Astral UV](https://docs.astral.sh/uv/) installed globally
-- [Powershell 7](https://github.com/PowerShell/powershell/releases)
+- [Powershell 7](https://github.com/PowerShell/powershell/releases) or PowerShell 5
 - Environment variables:
     - `PRIV_PYTHON_SCRIPTS` = Path to the folder containing the scripts (`00_Scripts`)
     - `PRIV_PYTHON_VENV` = Path to the folder containing the virtual environments (`00_Venvs`, or any other place)
