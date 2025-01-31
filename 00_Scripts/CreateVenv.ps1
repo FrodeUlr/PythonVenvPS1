@@ -16,32 +16,25 @@ if ($null -eq $path -or -not (Test-Path -Path $path)) {
 Set-Location $path
 
 $directories = Get-ChildItem -Path $path -Directory
-while ($true) {
-    $flagged = $false
-    $venvName = $name
-    foreach ($directory in $directories) {
-        if ($directory.Name -eq $venvName) {
-            Write-Host "Virtual environment '$venvName' already exists" -ForegroundColor Yellow
-            $flagged = $true
-        }
+$flagged = $false
+$venvName = $name
+foreach ($directory in $directories) {
+    if ($directory.Name -eq $venvName) {
+        Write-Host "Virtual environment '$venvName' already exists" -ForegroundColor Yellow
+        $flagged = $true
     }
-    if ($flagged -eq $false) {
-        try {
-            Write-Host "Creating virtual environment '$venvName' with Python $version" -ForegroundColor Cyan
-            & uv venv $venvName --python $version
-            & .\$venvName\Scripts\activate.ps1
-            if ($clean -eq "false") {
-                uv pip install neovim pyvim pylint pydantic jupyter jupyterthemes ruff-lsp
-            }
-            Write-Host "Virtual environment '$venvName' created successfully" -ForegroundColor Green
-        } catch {
-            Write-Host "Error creating virtual environment '$venvName'" -ForegroundColor Red
+}
+if ($flagged -eq $false) {
+    try {
+        Write-Host "Creating virtual environment '$venvName' with Python $version" -ForegroundColor Cyan
+        & uv venv $venvName --python $version
+        & .\$venvName\Scripts\activate.ps1
+        if ($clean -eq "false") {
+            uv pip install neovim pyvim pylint pydantic jupyter jupyterthemes ruff-lsp
         }
-        finally {
-            Write-Host "Exiting virtual environment creation script" -ForegroundColor Cyan
-        }
-        break
+        Write-Host "Virtual environment '$venvName' created successfully" -ForegroundColor Green
+    } catch {
+        Write-Host "Error creating virtual environment '$venvName'" -ForegroundColor Red
     }
-    break
 }
 Set-Location $currentDirTmp

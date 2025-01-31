@@ -12,9 +12,6 @@ if ($null -eq $scripts -or -not (Test-Path -Path $scripts)) {
 }
 
 $directories = Get-ChildItem -Path $path -Directory
-foreach ($directory in $directories) {
-  write-host $directory.Name
-}
 Write-Host "Chose the environment to delete" -ForegroundColor Cyan
 Invoke-Expression "$scripts\ListVenv.ps1"
 
@@ -28,7 +25,8 @@ while ($true) {
     $choice = [int]$choice
     if ($choice -ge 1 -and $choice -lt $directories.Count + 1) {
       $venv = $directories[$choice - 1]
-      Write-Host "Are you sure you want to delete environment $venv ? (y/n)" -ForegroundColor Red
+      Write-Host "Are you sure you want to delete environment:" -ForegroundColor Yellow
+      Write-Host "$venv ? (y/n)" -ForegroundColor Red
       $confirm = Read-Host
       if ($confirm -ne "y") {
         Write-Host "Environment $venv not deleted" -ForegroundColor Yellow
