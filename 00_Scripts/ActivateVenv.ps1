@@ -28,7 +28,7 @@ while ($true) {
         if($selected -ge 1 -and $selected -le $directories.Count) {
             $correctInput = $selected - 1
             $choice = "$($directories[$correctInput].Name)"
-            $newPath = Join-Path $path $choice $pathpython
+            $newPath = Join-Path $path -ChildPath $choice | Join-Path -ChildPath $pathpython
             & $newPath
             break
         }
