@@ -11,10 +11,7 @@ $path = $env:PRIV_PYTHON_LOC
 
 if ($null -eq $path -or -not (Test-Path -Path $path)) {
   Write-Host "Environment variable PRIV_PYTHON_LOC is not correctly set" -ForegroundColor Red
-  $currentDir = $PSScriptRoot
-  $parentDir = Split-Path -Path $currentDir -Parent
-  $path = Join-Path -Path $parentDir -ChildPath "01_Venv"
-  Write-Host "Setting venv path: $path" -ForegroundColor Yellow
+  exit 1
 }
 Set-Location $path
 
