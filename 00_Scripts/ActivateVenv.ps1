@@ -1,30 +1,31 @@
 $path = $env:PRIV_PYTHON_LOC
+$scripts = $env:PRIV_PYTHON_SCRIPTS
+
+if ($null -eq $path -or -not (Test-Path -Path $path)) {
+  Write-Host "Environment variable PRIV_PYTHON_LOC is not correctly set" -ForegroundColor Red
+  $currentDir = $PSScriptRoot
+  $parentDir = Split-Path -Path $currentDir -Parent
+  $path = Join-Path -Path $parentDir -ChildPath "01_Venv"
+  Write-Host "Setting venv path: $path" -ForegroundColor Yellow
+}
+
+if ($null -eq $scripts -or -not (Test-Path -Path $scripts)) {
+  Write-Host "Environment variable PRIV_PYTHON_SCRIPTS is not correctly set" -ForegroundColor Red
+  $currentDir = $PSScriptRoot
+  $parentDir = Split-Path -Path $currentDir -Parent
+  $scripts = Join-Path -Path $parentDir -ChildPath "00_Scripts"
+  Write-Host "Setting scripts path: $scripts" -ForegroundColor Yellow
+}
+
 $directories = Get-ChildItem -Path $path -Directory
 $pathpython = "\scripts\activate.ps1"
-$versions = @()
-$names = @()
-$indexes = @()
-Write-Host "Chose the environment you want to activate:"
-for($i = 0; $i -lt $directories.Count; $i++) {
-    $y = $i + 1
-    $content = Get-Content -Path "$($directories[$i].FullName)\pyvenv.cfg"
-    $content | Select-String -Pattern "version" | ForEach-Object {
-        $version = $_.ToString().Split('=')[1].Trim()
-    }
-    $indexes += $y
-    $names += $directories[$i].Name
-    $versions += $version
-}
-$tableobject = foreach($i in 0..($indexes.Count - 1)) {
-    [PSCustomObject]@{
-        Index = $indexes[$i]
-        Name = $names[$i]
-        Version = $versions[$i]
-    }
-}
-$tableobject | Format-Table -Property Index, Name, Version -AutoSize
+Write-Host "Available environment(s):" -ForegroundColor Cyan
+
+Invoke-Expression "$scripts\ListVenv.ps1"
+
 while ($true) {
-    $selected = Read-Host "Enter your choice(q to quit)"
+    Write-Host "Enter the number of the environment to activate (q to quit)" -ForegroundColor Cyan
+    $selected = Read-Host
     if($selected -eq "q") {
         break
     }
@@ -40,7 +41,7 @@ while ($true) {
         throw
     }
     catch {
-        Write-Host "Invalid input. Please try again."
+        Write-Host "Invalid input. Please try again." -ForegroundColor Red
         continue
     }
 }

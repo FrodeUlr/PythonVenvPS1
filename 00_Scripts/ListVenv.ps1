@@ -1,4 +1,11 @@
 $path = $env:PRIV_PYTHON_LOC
+
+if ($null -eq $path -or -not (Test-Path -Path $path)) {
+  $currentDir = $PSScriptRoot
+  $parentDir = Split-Path -Path $currentDir -Parent
+  $path = Join-Path -Path $parentDir -ChildPath "01_Venv"
+}
+
 $directories = Get-ChildItem -Path $path -Directory
 $indexes = @()
 $names = @()
